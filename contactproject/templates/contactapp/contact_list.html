@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact List</title>
+  </head>
+  <body>
+    <h1>Contact List</h1>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Email</th>
+        <th>Cell No.</th>
+        <th>Actions</th>
+      </tr>
+      {% for contact in object_list %}
+      <tr>
+        <td>{{contact.name}}</td>
+        <td>{{contact.address}}</td>
+        <td>{{contact.email}}</td>
+        <td>{{contact.cell}}</td>
+        <td>
+          <a href="{% url 'contact_details' contact.id %}">Detail</a>
+          <a href="{% url 'contact_update' contact.id %}">Edit</a>
+          <a href="{% url 'contact_delete' contact.id %}">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    <a href="{% url 'create_contact' %}">Add New Contact</a>
+  </body>
+</html>
